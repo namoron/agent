@@ -17,12 +17,14 @@
 - 設計、分解、移行計画には `python-architect` agent を優先する。
 - Python のレビューや回帰確認には `python-reviewer` agent を優先する。
 - API 仕様やバージョン依存の確認には `docs-researcher` agent を優先する。
+- 日本語論文の LaTeX 執筆・推敲には `jp-paper-latex` agent を優先する。
 - agent は小さな差分、明示的な検証、既存構成との整合を重視する。
 
 ## Current Repository Features
 
 - repository instructions
 - path-specific Python instructions
+- path-specific LaTeX instructions
 - custom agents
 - repository hooks
 - session memory capture hooks that write learning candidates to `.git/copilot-memory/`

@@ -7,6 +7,7 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 - Repository-wide shared behavior is defined in the root `AGENTS.md`.
 - Copilot-specific response shaping is defined in `.github/copilot-instructions.md`.
 - Python-specific behavior is further refined in `.github/instructions/python.instructions.md`.
+- LaTeX paper-writing behavior is refined in `.github/instructions/latex.instructions.md`.
 - Copilot custom agents live under `.github/agents/`.
 - This repository currently supports Copilot repository instructions, path-specific instructions, custom agents, and repository hooks.
 
@@ -23,6 +24,7 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 - Use `.github/agents/python-architect.agent.md` for staged planning, refactors, and risky decomposition.
 - Use `.github/agents/python-reviewer.agent.md` for review, regression checks, and security-oriented inspection.
 - Use `.github/agents/docs-researcher.agent.md` for version-sensitive docs and API verification.
+- Use `.github/agents/jp-paper-latex.agent.md` for Japanese academic writing and revision in LaTeX.
 
 ## Working Style
 
@@ -35,6 +37,7 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 
 - Repository-level custom instructions via `.github/copilot-instructions.md`
 - Path-specific Python instructions via `.github/instructions/python.instructions.md`
+- Path-specific LaTeX instructions via `.github/instructions/latex.instructions.md`
 - Custom agents for implementation, architecture, review, and docs research
 - Repository hooks under `.github/hooks/`
 - Memory-capture hooks that log prompts, tool outcomes, and session-end learning candidates under `.git/copilot-memory/`
