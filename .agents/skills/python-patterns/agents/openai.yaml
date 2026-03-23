@@ -1,0 +1,7 @@
+interface:
+  display_name: "Python Patterns"
+  short_description: "Python structure, typing, and boundary patterns"
+  default_prompt: "Use $python-patterns to choose a Python structure for services, DTOs, validation, and testable boundaries."
+
+policy:
+  allow_implicit_invocation: true

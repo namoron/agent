@@ -14,8 +14,18 @@
 
 - agent 作業時は、まずリポジトリ直下の `AGENTS.md` を参照する。
 - Python の実装や修正には `python-dev` agent を優先する。
+- 設計、分解、移行計画には `python-architect` agent を優先する。
 - Python のレビューや回帰確認には `python-reviewer` agent を優先する。
+- API 仕様やバージョン依存の確認には `docs-researcher` agent を優先する。
 - agent は小さな差分、明示的な検証、既存構成との整合を重視する。
+
+## Current Repository Features
+
+- repository instructions
+- path-specific Python instructions
+- custom agents
+- repository hooks
+- Codex-compatible skills mirrored under `.agents/skills/`
 
 ## Working Style
 

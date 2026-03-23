@@ -8,6 +8,7 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 - Copilot-specific response shaping is defined in `.github/copilot-instructions.md`.
 - Python-specific behavior is further refined in `.github/instructions/python.instructions.md`.
 - Copilot custom agents live under `.github/agents/`.
+- This repository currently supports Copilot repository instructions, path-specific instructions, custom agents, and repository hooks.
 
 ## Model Policy
 
@@ -19,7 +20,9 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 ## Agent Selection
 
 - Use `.github/agents/python-dev.agent.md` for implementation, bug fixes, and test updates.
+- Use `.github/agents/python-architect.agent.md` for staged planning, refactors, and risky decomposition.
 - Use `.github/agents/python-reviewer.agent.md` for review, regression checks, and security-oriented inspection.
+- Use `.github/agents/docs-researcher.agent.md` for version-sensitive docs and API verification.
 
 ## Working Style
 
@@ -27,6 +30,14 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 - Prefer test-first work for new behavior and bug fixes.
 - Match existing file layout, naming, and architectural boundaries.
 - Report critical findings before lower-priority cleanup suggestions.
+
+## Current Feature Coverage
+
+- Repository-level custom instructions via `.github/copilot-instructions.md`
+- Path-specific Python instructions via `.github/instructions/python.instructions.md`
+- Custom agents for implementation, architecture, review, and docs research
+- Repository hooks under `.github/hooks/`
+- Optional MCP-aware agent extension when repository MCP is configured in GitHub settings
 
 ## Safety
 

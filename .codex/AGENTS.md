@@ -8,6 +8,7 @@ Use it together with the repository root instructions, not as a replacement.
 - Adapt the design intent from `everything-claude-code` to Codex.
 - Keep the workflow Python-first, test-first, and review-heavy.
 - Prefer explicit reasoning depth over broad but shallow changes.
+- Support current Codex features used in this repository: AGENTS layering, project-local config, subagents, skills, and MCP-backed docs lookup.
 
 ## Model And Reasoning Policy
 
@@ -65,6 +66,8 @@ Prefer repository skills from `.agents/skills/` when they match the task:
 - `python-tdd` for test-first Python implementation
 - `python-review` for Python diff review and risk assessment
 - `python-patterns` for structure, typing, and boundary design decisions
+
+These skills now include `agents/openai.yaml` metadata so Codex can discover them more cleanly in skill-aware flows.
 
 ## Validation Commands
 

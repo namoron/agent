@@ -1,0 +1,7 @@
+interface:
+  display_name: "Python TDD"
+  short_description: "Pytest-first Python implementation workflow"
+  default_prompt: "Use $python-tdd to implement or fix Python behavior with a failing pytest test first."
+
+policy:
+  allow_implicit_invocation: true
