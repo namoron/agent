@@ -1,0 +1,39 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+# Project-local Codex configuration for Python work.
+# Keep the model unpinned so Codex can use the current default frontier model.
+# Reasoning depth is controlled per agent role under `.codex/agents/`.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 4
+max_depth = 1
+
+[agents.python_dev]
+description = "Python implementation agent for focused coding, bug fixes, and test updates."
+config_file = "agents/python-dev.toml"
+
+[agents.python_architect]
+description = "Python planning and architecture agent for decomposition and risky refactors."
+config_file = "agents/python-architect.toml"
+
+[agents.python_reviewer]
+description = "Python review agent for correctness, regressions, security, and missing tests."
+config_file = "agents/python-reviewer.toml"
+
+[agents.explorer]
+description = "Read-only exploration agent for tracing code paths and gathering evidence."
+config_file = "agents/explorer.toml"
+
+[agents.docs_researcher]
+description = "Documentation and API verification agent for primary-source research."
+config_file = "agents/docs-researcher.toml"

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/pre-tool-policy.sh",
+        "powershell": "& .\\.github\\hooks\\scripts\\pre-tool-policy.ps1 -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}
