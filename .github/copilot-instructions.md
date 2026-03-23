@@ -25,6 +25,7 @@
 - path-specific Python instructions
 - custom agents
 - repository hooks
+- session memory capture hooks that write learning candidates to `.git/copilot-memory/`
 - Codex-compatible skills mirrored under `.agents/skills/`
 
 ## Working Style

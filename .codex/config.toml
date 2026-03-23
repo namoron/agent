@@ -37,3 +37,11 @@ config_file = "agents/explorer.toml"
 [agents.docs_researcher]
 description = "Documentation and API verification agent for primary-source research."
 config_file = "agents/docs-researcher.toml"
+
+[agents.evaluator]
+description = "Verification-focused agent for checkpoint evaluation, regression checks, and validation loop synthesis."
+config_file = "agents/evaluator.toml"
+
+[agents.worktree_orchestrator]
+description = "Plans and coordinates parallel work across git worktrees, subagents, and staged merge points."
+config_file = "agents/worktree-orchestrator.toml"

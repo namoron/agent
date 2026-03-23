@@ -58,6 +58,8 @@ Use this mapping consistently in all project-local Codex agents.
 - `python_reviewer`: correctness and security review, `xhigh`
 - `explorer`: read-only evidence gathering, `high`
 - `docs_researcher`: docs and API verification, `high`
+- `evaluator`: checkpoint evaluation and verification-loop work, `xhigh`
+- `worktree_orchestrator`: parallel worktree and subagent coordination, `xhigh`
 
 ## Skills
 
@@ -79,3 +81,9 @@ Use only what exists in the repository:
 - `black --check .`
 - `isort --check-only .`
 - `bandit -r src/`
+
+## Parallel Work Guidance
+
+- Use `explorer` for read-only code discovery before delegating edits.
+- Use `worktree_orchestrator` when tasks can be split into isolated write scopes or separate worktrees.
+- Use `evaluator` after implementation to verify checkpoints, summarize residual risk, and tighten the feedback loop.

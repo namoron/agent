@@ -37,6 +37,7 @@ This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot
 - Path-specific Python instructions via `.github/instructions/python.instructions.md`
 - Custom agents for implementation, architecture, review, and docs research
 - Repository hooks under `.github/hooks/`
+- Memory-capture hooks that log prompts, tool outcomes, and session-end learning candidates under `.git/copilot-memory/`
 - Optional MCP-aware agent extension when repository MCP is configured in GitHub settings
 
 ## Safety

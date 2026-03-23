@@ -20,10 +20,15 @@
 ## Current Agent Roles
 
 - Copilot: `python-dev`, `python-architect`, `python-reviewer`, `docs-researcher`
-- Codex: `python_dev`, `python_architect`, `python_reviewer`, `explorer`, `docs_researcher`
+- Codex: `python_dev`, `python_architect`, `python_reviewer`, `explorer`, `docs_researcher`, `evaluator`, `worktree_orchestrator`
 
 ## Current Skill Set
 
 - `python-tdd`
 - `python-review`
 - `python-patterns`
+
+## Extra Automation
+
+- Copilot hook-based memory capture writes session candidates to `.git/copilot-memory/`
+- Codex includes evaluator and worktree-orchestrator roles for stronger verification and parallel execution planning

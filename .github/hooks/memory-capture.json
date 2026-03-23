@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/memory-capture.sh sessionStart",
+        "powershell": "& .\\.github\\hooks\\scripts\\memory-capture.ps1 -Mode sessionStart -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ],
+    "userPromptSubmitted": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/memory-capture.sh userPromptSubmitted",
+        "powershell": "& .\\.github\\hooks\\scripts\\memory-capture.ps1 -Mode userPromptSubmitted -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/memory-capture.sh postToolUse",
+        "powershell": "& .\\.github\\hooks\\scripts\\memory-capture.ps1 -Mode postToolUse -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ],
+    "errorOccurred": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/memory-capture.sh errorOccurred",
+        "powershell": "& .\\.github\\hooks\\scripts\\memory-capture.ps1 -Mode errorOccurred -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ],
+    "sessionEnd": [
+      {
+        "type": "command",
+        "bash": "bash ./.github/hooks/scripts/memory-capture.sh sessionEnd",
+        "powershell": "& .\\.github\\hooks\\scripts\\memory-capture.ps1 -Mode sessionEnd -JsonInput ([Console]::In.ReadToEnd())",
+        "cwd": ".",
+        "timeoutSec": 15
+      }
+    ]
+  }
+}
