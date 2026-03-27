@@ -1,6 +1,6 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 
-# Project-local Codex configuration for Python work.
+# Project-local Codex configuration for research-oriented Python work.
 # Keep the model unpinned so Codex can use the current default frontier model.
 # Reasoning depth is controlled per agent role under `.codex/agents/`.
 
@@ -19,15 +19,15 @@ max_threads = 4
 max_depth = 1
 
 [agents.python_dev]
-description = "Python implementation agent for focused coding, bug fixes, and test updates."
+description = "Python implementation agent for simulations, data processing, plotting, bug fixes, and test updates."
 config_file = "agents/python-dev.toml"
 
 [agents.python_architect]
-description = "Python planning and architecture agent for decomposition and risky refactors."
+description = "Python planning and architecture agent for experiment structure, decomposition, and risky refactors."
 config_file = "agents/python-architect.toml"
 
 [agents.python_reviewer]
-description = "Python review agent for correctness, regressions, security, and missing tests."
+description = "Python review agent for correctness, reproducibility, regressions, and missing tests."
 config_file = "agents/python-reviewer.toml"
 
 [agents.explorer]
@@ -35,7 +35,7 @@ description = "Read-only exploration agent for tracing code paths and gathering 
 config_file = "agents/explorer.toml"
 
 [agents.docs_researcher]
-description = "Documentation and API verification agent for primary-source research."
+description = "Documentation and API verification agent for Sionna, TensorFlow, Python libraries, and primary-source research."
 config_file = "agents/docs-researcher.toml"
 
 [agents.jp_paper_latex]
@@ -45,11 +45,3 @@ config_file = "agents/jp-paper-latex.toml"
 [agents.en_paper_latex]
 description = "English LaTeX paper writing agent for concise academic drafting and revision."
 config_file = "agents/en-paper-latex.toml"
-
-[agents.evaluator]
-description = "Verification-focused agent for checkpoint evaluation, regression checks, and validation loop synthesis."
-config_file = "agents/evaluator.toml"
-
-[agents.worktree_orchestrator]
-description = "Plans and coordinates parallel work across git worktrees, subagents, and staged merge points."
-config_file = "agents/worktree-orchestrator.toml"

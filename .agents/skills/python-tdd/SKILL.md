@@ -1,6 +1,6 @@
 ---
 name: python-tdd
-description: Python の機能追加や修正を test-first で進めるときに使う。まず失敗する pytest を書き、最小のコード変更で通し、回帰を検証する流れを扱う。
+description: Python の機能追加や修正を test-first で進めるときに使う。シミュレーション、CSV 処理、集計、plot 補助コードの検証も含む。
 ---
 
 # Python TDD
@@ -23,12 +23,14 @@ description: Python の機能追加や修正を test-first で進めるときに
 - happy path と、最も起こりやすい failure path の両方を押さえる。
 - テスト名は実装詳細ではなく振る舞いで付ける。
 - 新しい helper を作る前に、既存の fixture や factory を使う。
+- 数値系では、shape、列名、期待値、許容誤差、保存ファイル名を明示する。
 
 ## Python 前提
 
 - 変更に触れる production code では型ヒントを使う。
 - ビジネスロジックは I/O や framework glue から分離する。
 - `pathlib.Path`、f-string、`logging` を優先する。
+- 乱数やサンプリングを使う場合は、seed や deterministic な条件をテストで固定する。
 
 ## 検証
 

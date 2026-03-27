@@ -1,6 +1,6 @@
 ---
 name: python-review
-description: Python の変更を、バグ、回帰、テスト不足、型の問題、セキュリティリスクの観点でレビューするときに使う。style だけの指摘ではなく、リスク優先のコードレビュー向け。
+description: Python の変更を、バグ、回帰、再現性、テスト不足、型の問題の観点でレビューするときに使う。シミュレーションや集計コード向け。
 ---
 
 # Python Review
@@ -12,7 +12,7 @@ description: Python の変更を、バグ、回帰、テスト不足、型の問
 1. correctness と振る舞いの回帰
 2. 例外処理と edge case
 3. 足りない、または弱いテスト
-4. 型安全性と保守性
+4. shape / dtype / 列名 / seed の整合
 5. セキュリティ上の懸念
 
 ## 見るポイント
@@ -26,6 +26,10 @@ description: Python の変更を、バグ、回帰、テスト不足、型の問
 - loop 内での N+1 query や繰り返し I/O
 - 公開関数に有用な型ヒントがないこと
 - 変更された分岐や failure path をカバーしていないテスト
+- tensor や array の shape mismatch、期待 axis の取り違え
+- `CSV` / dataframe の列名ズレ、暗黙の型変換、欠損値の見落とし
+- seed 漏れや、再実行ごとに結果が揺れる実装
+- plot の軸ラベル、凡例、保存先の不整合
 
 ## 出力スタイル
 

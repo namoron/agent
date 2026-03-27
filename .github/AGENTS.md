@@ -28,6 +28,13 @@
 - 日本語論文の LaTeX 執筆・推敲には `.github/agents/jp-paper-latex.agent.md` を使う。
 - 英語論文の LaTeX 執筆・推敲には `.github/agents/en-paper-latex.agent.md` を使う。
 
+## 研究・解析タスクでの前提
+
+- 主な対象は、無線通信シミュレーション、数値実験、CSV 処理、プロット生成、論文執筆である。
+- frontend や UI 実装の一般論より、再現性、数値整合性、データ列の意味、shape / dtype の正しさを優先する。
+- `NVIDIA Sionna`、`TensorFlow`、`NumPy`、`Pandas`、`Matplotlib` に関わる変更では、API の思い込みより一次情報を優先する。
+- 研究コードでは、実験条件、seed、出力先、軸ラベル、単位が追跡可能であることを重視する。
+
 ## 作業スタイル
 
 - 変更は小さく、明示的で、レビューしやすい形にする。
