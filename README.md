@@ -1,8 +1,8 @@
 # agent
 
-`everything-claude-code` を参考に、最新の GitHub Copilot と Codex の agent 機能へ寄せた最小テンプレートです。
+`everything-claude-code` を参考にしつつ、最新の GitHub Copilot と Codex の agent 機能へ寄せた最小構成のテンプレートです。
 
-## Included
+## 含まれるもの
 
 - 共通ルール: `AGENTS.md`
 - GitHub Copilot:
@@ -17,18 +17,18 @@
   - `.agents/skills/*/SKILL.md`
   - `.agents/skills/*/agents/openai.yaml`
 
-## Current Agent Roles
+## 現在の Agent Roles
 
 - Copilot: `python-dev`, `python-architect`, `python-reviewer`, `docs-researcher`
 - Codex: `python_dev`, `python_architect`, `python_reviewer`, `explorer`, `docs_researcher`, `evaluator`, `worktree_orchestrator`
 
-## Current Skill Set
+## 現在の Skill 一覧
 
 - `python-tdd`
 - `python-review`
 - `python-patterns`
 
-## Extra Automation
+## 補助機能
 
-- Copilot hook-based memory capture writes session candidates to `.git/copilot-memory/`
-- Codex includes evaluator and worktree-orchestrator roles for stronger verification and parallel execution planning
+- Copilot の hook ベース memory capture は、セッション候補を `.git/copilot-memory/` に書き出す
+- Codex には、検証を強める `evaluator` と並列実行計画を助ける `worktree_orchestrator` が含まれる

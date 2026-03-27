@@ -1,44 +1,44 @@
 ---
 name: python-patterns
-description: Use when designing or refactoring Python code and you need repository-friendly patterns for structure, typing, services, DTOs, validation, and testable boundaries.
+description: Python コードの設計や refactor で、構造、型付け、service、DTO、validation、テストしやすい境界の作り方に迷うときに使う。
 ---
 
 # Python Patterns
 
-Use this skill when deciding how Python code should be structured, not just what it should do.
+この skill は、Python コードが「何をするか」だけでなく、「どう構成するか」を決めるときに使う。
 
-## Default Patterns
+## 基本パターン
 
-- Keep modules focused and avoid large mixed-responsibility files.
-- Separate business rules from transport, CLI, ORM, or framework glue.
-- Prefer explicit data flow over hidden mutation.
-- Use dataclasses for simple DTOs and configuration-shaped data.
-- Use `Protocol` when callers should depend on behavior rather than concrete storage or service classes.
+- module は焦点を絞り、責務の混ざった巨大ファイルを避ける。
+- ビジネスルールは transport、CLI、ORM、framework glue から分離する。
+- 隠れた mutation より、明示的な data flow を優先する。
+- 単純な DTO や設定データには `dataclass` を使う。
+- 呼び出し側が具体実装ではなく振る舞いに依存すべきなら `Protocol` を使う。
 
-## Function Design
+## 関数設計
 
-- Favor small functions with explicit inputs and outputs.
-- Prefer returning values over mutating passed-in objects.
-- Group repeated parameters into a dataclass when signatures get crowded.
-- Raise specific exceptions or return explicit domain results instead of silently failing.
+- 関数は小さくし、入力と出力を明確にする。
+- 渡された object を変更するより、値を返す形を優先する。
+- シグネチャが混み合ってきたら、繰り返しパラメータを `dataclass` にまとめる。
+- 失敗を黙って握りつぶさず、具体的な例外か明示的な domain result を返す。
 
-## Boundary Design
+## 境界設計
 
-- Validate external input at the boundary.
-- Convert framework objects into plain Python structures before deeper business logic when useful.
-- Keep side effects near the edge of the system so unit tests stay simple.
+- 外部入力は境界で検証する。
+- 必要なら framework object を plain Python structure に変換してから深いビジネスロジックへ渡す。
+- side effect はシステムの端に寄せ、unit test を単純に保つ。
 
-## Common Choices
+## よくある選択
 
-- File paths: `pathlib.Path`
-- String formatting: f-strings
-- Resource cleanup: context managers
-- Structured shared data: `dataclass` or `NamedTuple`
-- Behavioral abstraction: `Protocol`
+- file path: `pathlib.Path`
+- 文字列整形: f-string
+- resource cleanup: context manager
+- 構造化された共有データ: `dataclass` または `NamedTuple`
+- 振る舞いによる抽象化: `Protocol`
 
-## When Refactoring
+## Refactor するとき
 
-1. Identify the seam between business logic and side effects.
-2. Extract pure logic first.
-3. Preserve behavior with tests before moving code around.
-4. Only then simplify call sites and naming.
+1. まずビジネスロジックと side effect の境目を見つける。
+2. pure logic を先に切り出す。
+3. コードを動かす前に、テストで振る舞いを保護する。
+4. そのあとで call site や naming を簡潔にする。

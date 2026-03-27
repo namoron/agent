@@ -1,40 +1,40 @@
 ---
 name: python-review
-description: Use when reviewing Python changes for bugs, regressions, missing tests, typing issues, and security risks. Optimized for risk-first code review rather than style-only feedback.
+description: Python の変更を、バグ、回帰、テスト不足、型の問題、セキュリティリスクの観点でレビューするときに使う。style だけの指摘ではなく、リスク優先のコードレビュー向け。
 ---
 
 # Python Review
 
-Use this skill when asked to review Python code or to sanity-check a Python diff before merge.
+この skill は、Python コードのレビューや、merge 前の差分 sanity check を依頼されたときに使う。
 
-## Review Order
+## レビュー順序
 
-1. Correctness and behavioral regressions
-2. Exception handling and edge cases
-3. Missing or weak tests
-4. Type safety and maintainability
-5. Security-sensitive issues
+1. correctness と振る舞いの回帰
+2. 例外処理と edge case
+3. 足りない、または弱いテスト
+4. 型安全性と保守性
+5. セキュリティ上の懸念
 
-## Things To Look For
+## 見るポイント
 
-- Silent exception swallowing or overly broad `except`
-- Mutable default arguments
-- Missing validation at system boundaries
-- Unsafe subprocess usage or shell string interpolation
-- SQL built with string concatenation or f-strings
-- Path traversal risks from user-controlled paths
-- N+1 query patterns or repeated I/O in loops
-- Public functions without useful type hints
-- Tests that do not cover the changed branch or failure path
+- 例外の握りつぶしや、広すぎる `except`
+- mutable default argument
+- システム境界での validation 不足
+- unsafe な subprocess 利用や shell 文字列補間
+- 文字列連結や f-string で組み立てた SQL
+- ユーザー制御 path による path traversal risk
+- loop 内での N+1 query や繰り返し I/O
+- 公開関数に有用な型ヒントがないこと
+- 変更された分岐や failure path をカバーしていないテスト
 
-## Output Style
+## 出力スタイル
 
-- Lead with findings, not a summary.
-- Order findings by severity.
-- Be concrete about file, behavior, and likely impact.
-- Treat missing tests as a real risk when behavior changed.
+- 要約より先に finding を出す。
+- finding は重大度順に並べる。
+- file、振る舞い、影響を具体的に示す。
+- 振る舞いが変わったなら、テスト不足は実際のリスクとして扱う。
 
-## Helpful Commands
+## 役立つ command
 
 - `git diff -- '*.py'`
 - `pytest path/to/test_file.py`
@@ -42,7 +42,7 @@ Use this skill when asked to review Python code or to sanity-check a Python diff
 - `black --check .`
 - `bandit -r src/`
 
-## Review Standard
+## レビュー基準
 
-Prefer minimal, high-signal feedback.
-Do not suggest broad cleanup unless it clearly reduces risk.
+高密度で無駄のないフィードバックを優先する。
+リスクを明確に下げる場合を除き、広い cleanup は勧めない。

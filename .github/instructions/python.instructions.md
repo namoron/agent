@@ -2,47 +2,47 @@
 applyTo: "**/*.py,**/*.pyi"
 ---
 
-# Python Instructions
+# Python 向け追加指示
 
-このファイルは Python コードに対する GitHub Copilot の追加指示です。
+このファイルは、Python コードに対する GitHub Copilot の追加指示である。
 
-## Core Conventions
+## 基本ルール
 
-- Python では `PEP 8` を守り、関数・メソッド・公開 API には型ヒントを付ける。
+- Python では `PEP 8` を守り、関数、メソッド、公開 API には型ヒントを付ける。
 - 可能なら `from __future__ import annotations` を使う前提で考える。
 - 文字列整形は基本的に f-string を使う。
 - ファイル操作やパス結合は `os.path` より `pathlib.Path` を優先する。
 - デバッグ用途の `print()` を増やさず、必要なら `logging` を使う。
 
-## Structure
+## 構造
 
 - 責務ごとに関数やモジュールを分割し、巨大なファイルや長すぎる関数を避ける。
 - 実装は既存のレイヤ分割に合わせ、ビジネスロジックを I/O 層へ混ぜ込みすぎない。
 - DTO や設定オブジェクトには `dataclass` を検討する。
-- 抽象化が必要な箇所では `Protocol` や明確なインターフェースを活用する。
+- 抽象化が必要な箇所では `Protocol` や明確な interface を活用する。
 
-## Testing
+## テスト
 
 - テストは `pytest` を前提に考える。
 - 新しい振る舞いを追加する場合は、できるだけ先に失敗するテストを書く。
 - テスト名は振る舞いが伝わるようにし、正常系だけでなく異常系も含める。
-- I/O や外部依存は分離し、ユニットテストしやすい形を優先する。
+- I/O や外部依存は分離し、unit test しやすい形を優先する。
 - カバレッジ確認が必要な場合は `pytest --cov=src --cov-report=term-missing` を基準にする。
 
-## Quality Gates
+## 品質ゲート
 
-- フォーマットは `black`、import 整理は `isort`、lint は `ruff` を想定する。
-- 自動生成するコードも、この前提に沿った import 順とスタイルで出力する。
+- format は `black`、import 整理は `isort`、lint は `ruff` を想定する。
+- 自動生成するコードも、この前提に沿った import 順と style で出力する。
 - 例外処理は明示的に行い、失敗時の文脈が分かる実装にする。
 
-## Security
+## セキュリティ
 
-- API キーや認証情報は環境変数またはシークレット管理経由で扱う。
-- SQL を使う場合は必ずパラメータ化し、文字列連結でクエリを作らない。
-- 外部入力は検証し、ファイルパス・コマンド実行・HTML 出力では特に慎重に扱う。
+- API key や認証情報は環境変数または secret 管理経由で扱う。
+- SQL を使う場合は必ず parameterize し、文字列連結で query を作らない。
+- 外部入力は検証し、file path、コマンド実行、HTML 出力では特に慎重に扱う。
 - セキュリティ確認が必要な場合は `bandit -r src/` を候補にする。
 
-## Review Priorities
+## レビュー優先順位
 
 - まずバグ、例外漏れ、型の不整合、境界条件の欠落を探す。
 - 次にテスト不足、可読性、保守性、性能上の明確な問題を確認する。

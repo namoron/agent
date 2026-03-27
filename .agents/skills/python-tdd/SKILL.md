@@ -1,45 +1,45 @@
 ---
 name: python-tdd
-description: Use when implementing or fixing Python behavior with a test-first workflow. Covers writing failing pytest tests first, making the minimum code change, and validating regressions.
+description: Python の機能追加や修正を test-first で進めるときに使う。まず失敗する pytest を書き、最小のコード変更で通し、回帰を検証する流れを扱う。
 ---
 
 # Python TDD
 
-Use this skill for Python feature work and bug fixes when test-first execution is practical.
+この skill は、Python の機能追加やバグ修正で test-first が現実的なときに使う。
 
-## Workflow
+## 進め方
 
-1. Identify the behavior change in one sentence.
-2. Find the closest existing test module and follow its structure.
-3. Write a failing `pytest` test first.
-4. Run the narrowest test target and confirm it fails for the expected reason.
-5. Implement the smallest code change that makes the test pass.
-6. Re-run the focused test, then expand to nearby tests.
-7. Refactor only after the behavior is covered.
+1. 変えたい振る舞いを 1 文で言い切る。
+2. 一番近い既存の test module を見つけ、その構成に合わせる。
+3. まず失敗する `pytest` を書く。
+4. 最も狭い test target を実行し、想定どおりの理由で失敗することを確認する。
+5. そのテストを通すための最小コード変更を実装する。
+6. まず対象テストを再実行し、そのあと近いテストへ広げる。
+7. 振る舞いがテストで守られてから refactor する。
 
-## Test Design
+## テスト設計
 
-- Prefer one behavioral assertion per test when possible.
-- Cover both the happy path and the most likely failure path.
-- Name tests by behavior, not by implementation detail.
-- Use fixtures and factories already present in the repository before inventing new helpers.
+- 可能なら 1 テスト 1 振る舞いにする。
+- happy path と、最も起こりやすい failure path の両方を押さえる。
+- テスト名は実装詳細ではなく振る舞いで付ける。
+- 新しい helper を作る前に、既存の fixture や factory を使う。
 
-## Python Expectations
+## Python 前提
 
-- Use type hints in production code touched by the change.
-- Keep business logic separate from I/O and framework glue.
-- Prefer `pathlib.Path`, f-strings, and `logging`.
+- 変更に触れる production code では型ヒントを使う。
+- ビジネスロジックは I/O や framework glue から分離する。
+- `pathlib.Path`、f-string、`logging` を優先する。
 
-## Validation
+## 検証
 
-Use only commands that exist in the repo:
+リポジトリにある command だけを使うこと。
 
 - `pytest path/to/test_file.py`
 - `pytest -k some_behavior`
 - `pytest --cov=src --cov-report=term-missing`
 - `ruff check .`
 
-## Stop Conditions
+## 中断条件
 
-- If the correct behavior is unclear, do not guess broadly. Read adjacent tests, docstrings, and calling code first.
-- If a failing test exposes a larger design issue, switch to the architecture agent before expanding the change.
+- 正しい振る舞いが不明な場合は広く推測しない。まず周辺テスト、docstring、呼び出し元コードを読む。
+- 失敗テストがより大きな設計問題を示している場合は、変更を広げる前に architecture agent へ切り替える。

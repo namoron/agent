@@ -38,6 +38,14 @@ config_file = "agents/explorer.toml"
 description = "Documentation and API verification agent for primary-source research."
 config_file = "agents/docs-researcher.toml"
 
+[agents.jp_paper_latex]
+description = "Japanese LaTeX paper writing agent for dearu-style drafting and revision."
+config_file = "agents/jp-paper-latex.toml"
+
+[agents.en_paper_latex]
+description = "English LaTeX paper writing agent for concise academic drafting and revision."
+config_file = "agents/en-paper-latex.toml"
+
 [agents.evaluator]
 description = "Verification-focused agent for checkpoint evaluation, regression checks, and validation loop synthesis."
 config_file = "agents/evaluator.toml"

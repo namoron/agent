@@ -1,49 +1,52 @@
-# GitHub Copilot Supplement
+# GitHub Copilot 向け補足ガイド
 
-This file supplements the root `AGENTS.md` for GitHub Copilot and GitHub Copilot coding agent.
+このファイルは、GitHub Copilot と GitHub Copilot coding agent 向けに、ルートの `AGENTS.md` を補足するものである。
 
-## Scope
+## 適用範囲
 
-- Repository-wide shared behavior is defined in the root `AGENTS.md`.
-- Copilot-specific response shaping is defined in `.github/copilot-instructions.md`.
-- Python-specific behavior is further refined in `.github/instructions/python.instructions.md`.
-- LaTeX paper-writing behavior is refined in `.github/instructions/latex.instructions.md`.
-- Copilot custom agents live under `.github/agents/`.
-- This repository currently supports Copilot repository instructions, path-specific instructions, custom agents, and repository hooks.
+- リポジトリ全体で共通の振る舞いはルートの `AGENTS.md` で定義する。
+- Copilot 固有の応答方針は `.github/copilot-instructions.md` で定義する。
+- Python 固有の振る舞いは `.github/instructions/python.instructions.md` でさらに細かく定義する。
+- LaTeX 論文執筆向けの振る舞いは `.github/instructions/latex.instructions.md` で定義する。
+- 英語 LaTeX 論文執筆向けの振る舞いは `.github/instructions/latex-english.instructions.md` で定義する。
+- Copilot custom agent は `.github/agents/` 配下に置く。
+- このリポジトリでは、Copilot の repository instructions、path-specific instructions、custom agents、repository hooks を利用する。
 
-## Model Policy
+## モデル方針
 
-- In Copilot Chat, prefer `Claude Sonnet 4.5` or `Claude Opus 4.5`.
-- If Claude models are unavailable or premium requests are exhausted, fall back to `Gemini 3 Pro`.
-- In Copilot coding agent, prefer the repository custom agents instead of generic execution.
-- If the coding agent cannot use the preferred model explicitly, continue with `Auto` or the platform default.
+- Copilot Chat では `Claude Sonnet 4.5` または `Claude Opus 4.5` を優先する。
+- Claude 系 model が使えない、または premium request を使い切った場合は `Gemini 3 Pro` にフォールバックする。
+- Copilot coding agent では、汎用実行よりこのリポジトリの custom agent を優先する。
+- coding agent 側で希望 model を明示指定できない場合は、`Auto` または platform default のまま継続してよい。
 
-## Agent Selection
+## Agent selection
 
-- Use `.github/agents/python-dev.agent.md` for implementation, bug fixes, and test updates.
-- Use `.github/agents/python-architect.agent.md` for staged planning, refactors, and risky decomposition.
-- Use `.github/agents/python-reviewer.agent.md` for review, regression checks, and security-oriented inspection.
-- Use `.github/agents/docs-researcher.agent.md` for version-sensitive docs and API verification.
-- Use `.github/agents/jp-paper-latex.agent.md` for Japanese academic writing and revision in LaTeX.
+- 実装、バグ修正、テスト更新には `.github/agents/python-dev.agent.md` を使う。
+- 段階的な計画、refactor、リスクの高い分解には `.github/agents/python-architect.agent.md` を使う。
+- レビュー、回帰確認、security 観点の点検には `.github/agents/python-reviewer.agent.md` を使う。
+- バージョン依存の docs や API 確認には `.github/agents/docs-researcher.agent.md` を使う。
+- 日本語論文の LaTeX 執筆・推敲には `.github/agents/jp-paper-latex.agent.md` を使う。
+- 英語論文の LaTeX 執筆・推敲には `.github/agents/en-paper-latex.agent.md` を使う。
 
-## Working Style
+## 作業スタイル
 
-- Keep changes small, explicit, and easy to review.
-- Prefer test-first work for new behavior and bug fixes.
-- Match existing file layout, naming, and architectural boundaries.
-- Report critical findings before lower-priority cleanup suggestions.
+- 変更は小さく、明示的で、レビューしやすい形にする。
+- 新しい振る舞いやバグ修正では test-first を優先する。
+- 既存のファイル配置、命名、アーキテクチャ境界に合わせる。
+- 重要な指摘は、優先度の低い cleanup 提案より先に伝える。
 
-## Current Feature Coverage
+## 現在カバーしている機能
 
-- Repository-level custom instructions via `.github/copilot-instructions.md`
-- Path-specific Python instructions via `.github/instructions/python.instructions.md`
-- Path-specific LaTeX instructions via `.github/instructions/latex.instructions.md`
-- Custom agents for implementation, architecture, review, and docs research
-- Repository hooks under `.github/hooks/`
-- Memory-capture hooks that log prompts, tool outcomes, and session-end learning candidates under `.git/copilot-memory/`
-- Optional MCP-aware agent extension when repository MCP is configured in GitHub settings
+- `.github/copilot-instructions.md` による repository-level custom instructions
+- `.github/instructions/python.instructions.md` による path-specific Python instructions
+- `.github/instructions/latex.instructions.md` による path-specific LaTeX instructions
+- `.github/instructions/latex-english.instructions.md` による path-specific English LaTeX instructions
+- 実装、設計、レビュー、docs 調査向けの custom agents
+- `.github/hooks/` 配下の repository hooks
+- prompt、tool outcome、session 終了時の learning candidate を `.git/copilot-memory/` に残す memory-capture hooks
+- GitHub 側で repository MCP を設定している場合の、MCP-aware agent extension
 
-## Safety
+## 安全性
 
-- Follow the repository hook and policy settings under `.github/hooks/`.
-- Do not bypass repository safety rules with destructive commands or force-push style workflows unless the user explicitly requests them.
+- `.github/hooks/` 配下の repository hook と policy 設定に従う。
+- 破壊的コマンドや force-push 系 workflow で repository の安全ルールを迂回しない。必要な場合はユーザーの明示依頼を前提とする。

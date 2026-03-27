@@ -1,79 +1,89 @@
-# Codex Supplement For Python
+# Codex 向け補足ガイド (Python 中心)
 
-This file supplements the root `AGENTS.md` for OpenAI Codex usage in this repository.
-Use it together with the repository root instructions, not as a replacement.
+このファイルは、このリポジトリで OpenAI Codex を使うときのために、ルートの `AGENTS.md` を補足するものである。
+置き換えではなく、ルートの指示とあわせて使うこと。
 
-## Goal
+## 目的
 
-- Adapt the design intent from `everything-claude-code` to Codex.
-- Keep the workflow Python-first, test-first, and review-heavy.
-- Prefer explicit reasoning depth over broad but shallow changes.
-- Support current Codex features used in this repository: AGENTS layering, project-local config, subagents, skills, and MCP-backed docs lookup.
+- `everything-claude-code` の設計意図を Codex 向けに移し替える。
+- Python-first、test-first、review-heavy の進め方を維持する。
+- 広く浅い変更よりも、明示的で十分な reasoning depth を優先する。
+- このリポジトリで使っている Codex の機能
+  - `AGENTS.md` の階層適用
+  - project-local config
+  - subagents
+  - skills
+  - MCP ベースの docs lookup
+    を前提に支援する。
 
-## Model And Reasoning Policy
+## モデルと reasoning policy
 
-Codex does not use Claude models directly in this repository setup.
-Instead, map the original Claude-oriented intent to Codex reasoning effort:
+このリポジトリ構成では、Codex は Claude model を直接使わない。
+その代わり、Claude 前提の設計意図を Codex の reasoning effort に次のように対応づける。
 
-- Tasks that would normally use `Claude Sonnet` should use `model_reasoning_effort = "high"`.
-- Tasks that would normally use `Claude Opus` should use `model_reasoning_effort = "xhigh"`.
+- 通常 `Claude Sonnet` を想定していたタスクでは `model_reasoning_effort = "high"` を使う。
+- 通常 `Claude Opus` を想定していたタスクでは `model_reasoning_effort = "xhigh"` を使う。
 
-Use this mapping consistently in all project-local Codex agents.
+この対応は、project-local の Codex agent 全体で一貫して使うこと。
 
-## Python Workflow
+## Python workflow
 
-1. Read existing code, tests, and nearby modules before editing.
-2. For non-trivial work, make a short plan before changing files.
-3. Prefer test-first changes for new behavior and bug fixes.
-4. Keep diffs small and aligned with the current structure.
-5. Validate the narrowest relevant scope first, then expand if needed.
+1. 編集前に既存コード、テスト、近いモジュールを読む。
+2. 非自明な作業では、ファイル変更前に短い計画を立てる。
+3. 新しい振る舞いやバグ修正では test-first を優先する。
+4. 差分は小さく保ち、現在の構造に沿わせる。
+5. まず最小限の relevant scope を検証し、必要に応じて広げる。
 
-## Python Coding Rules
+## Python coding rules
 
-- Follow PEP 8 and use type hints on function signatures.
-- Prefer `pathlib.Path` over `os.path`.
-- Prefer f-strings over `%` formatting or `.format()`.
-- Prefer `logging` over ad hoc `print()` debugging.
-- Keep business logic separate from framework and I/O glue.
-- Prefer dataclasses or clear DTO-like objects when argument lists grow.
+- `PEP 8` を守り、関数シグネチャには型ヒントを付ける。
+- `os.path` より `pathlib.Path` を優先する。
+- `%` formatting や `.format()` より f-string を優先する。
+- 場当たり的な `print()` デバッグより `logging` を優先する。
+- ビジネスロジックは framework や I/O の glue code から分離する。
+- 引数が増えてきたら `dataclass` や DTO 的な明確なオブジェクトを検討する。
 
-## Testing And Review
+## テストとレビュー
 
-- Use `pytest` as the default testing framework.
-- Cover unit, integration, and important regression paths.
-- Treat missing tests, swallowed exceptions, weak validation, and type drift as real defects.
-- Review findings should prioritize correctness, regressions, security, and test gaps before style.
+- 既定の testing framework は `pytest` とする。
+- unit、integration、重要な regression path をカバーする。
+- テスト不足、例外の握りつぶし、弱い validation、型の drift は実際の不具合として扱う。
+- レビュー所見は、style より先に correctness、regression、security、test gap を優先する。
 
-## Security
+## セキュリティ
 
-- Never hardcode secrets, keys, passwords, or tokens.
-- Treat external input, file content, and API responses as untrusted.
-- Use parameterized queries and safe subprocess invocation.
-- Watch for path traversal, unsafe deserialization, and broad exception handling.
+- secret、key、password、token をハードコードしない。
+- 外部入力、ファイル内容、API response は未信頼データとして扱う。
+- parameterized query と安全な subprocess invocation を使う。
+- path traversal、unsafe deserialization、広すぎる例外処理に注意する。
 
-## Local Codex Roles
+## ローカル Codex roles
 
-- `python_dev`: Python implementation and focused bug fixing, `high`
-- `python_architect`: decomposition, design, and risky refactors, `xhigh`
-- `python_reviewer`: correctness and security review, `xhigh`
-- `explorer`: read-only evidence gathering, `high`
-- `docs_researcher`: docs and API verification, `high`
-- `evaluator`: checkpoint evaluation and verification-loop work, `xhigh`
-- `worktree_orchestrator`: parallel worktree and subagent coordination, `xhigh`
+- `python_dev`: Python 実装と集中的なバグ修正, `high`
+- `python_architect`: 分解、設計、リスクの高い refactor, `xhigh`
+- `python_reviewer`: correctness と security を重視した review, `xhigh`
+- `explorer`: read-only の根拠収集, `high`
+- `docs_researcher`: docs と API の確認, `high`
+- `jp_paper_latex`: 日本語学術 LaTeX の執筆・推敲, `high`
+- `en_paper_latex`: 英語学術 LaTeX の執筆・推敲, `high`
+- `evaluator`: checkpoint の評価と verification loop, `xhigh`
+- `worktree_orchestrator`: 並列 worktree と subagent の調整, `xhigh`
 
 ## Skills
 
-Prefer repository skills from `.agents/skills/` when they match the task:
+タスクに合うなら、`.agents/skills/` 配下の repository skill を優先する。
 
-- `python-tdd` for test-first Python implementation
-- `python-review` for Python diff review and risk assessment
-- `python-patterns` for structure, typing, and boundary design decisions
+- `python-tdd`: test-first の Python 実装
+- `python-review`: Python の差分レビューとリスク評価
+- `python-patterns`: 構造、型付け、boundary 設計の判断
+- `jp-paper-latex`: 日本語 LaTeX 論文の執筆・推敲
+- `en-paper-latex`: 英語 LaTeX 論文の執筆・推敲
 
-These skills now include `agents/openai.yaml` metadata so Codex can discover them more cleanly in skill-aware flows.
+これらの skill には `agents/openai.yaml` metadata も含まれており、Codex が skill-aware な flow で発見しやすくなっている。
 
-## Validation Commands
+## 検証コマンド
 
-Use only what exists in the repository:
+リポジトリにあるものだけを使うこと。
 
 - `pytest`
 - `pytest --cov=src --cov-report=term-missing`
@@ -82,8 +92,8 @@ Use only what exists in the repository:
 - `isort --check-only .`
 - `bandit -r src/`
 
-## Parallel Work Guidance
+## 並列作業の指針
 
-- Use `explorer` for read-only code discovery before delegating edits.
-- Use `worktree_orchestrator` when tasks can be split into isolated write scopes or separate worktrees.
-- Use `evaluator` after implementation to verify checkpoints, summarize residual risk, and tighten the feedback loop.
+- 編集を委譲する前に、read-only の調査には `explorer` を使う。
+- タスクを独立した write scope や別 worktree に分けられるなら `worktree_orchestrator` を使う。
+- 実装後は `evaluator` を使って checkpoint を確認し、残るリスクを要約して feedback loop を締める。
