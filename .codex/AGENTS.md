@@ -30,11 +30,12 @@
 ## Python workflow
 
 1. 編集前に既存コード、テスト、近いモジュールを読む。
-2. 非自明な作業では、ファイル変更前に短い計画を立てる。
-3. 新しい振る舞いやバグ修正では test-first を優先する。
-4. 差分は小さく保ち、現在の構造に沿わせる。
-5. まず最小限の relevant scope を検証し、必要に応じて広げる。
-6. 実験コードでは、seed、shape、dtype、device、入出力列名、単位が保たれているかを確認する。
+2. Python スクリプトや Python 製ツールの実行は、基本 `uv` を使い、`python` や `pytest` を直接呼ぶ代わりに `uv run ...` を優先する。
+3. 非自明な作業では、ファイル変更前に短い計画を立てる。
+4. 新しい振る舞いやバグ修正では test-first を優先する。
+5. 差分は小さく保ち、現在の構造に沿わせる。
+6. まず最小限の relevant scope を検証し、必要に応じて広げる。
+7. 実験コードでは、seed、shape、dtype、device、入出力列名、単位が保たれているかを確認する。
 
 ## Python coding rules
 
@@ -90,12 +91,12 @@
 
 リポジトリにあるものだけを使うこと。
 
-- `pytest`
-- `pytest --cov=src --cov-report=term-missing`
-- `ruff check .`
-- `black --check .`
-- `isort --check-only .`
-- `bandit -r src/`
+- `uv run pytest`
+- `uv run pytest --cov=src --cov-report=term-missing`
+- `uv run ruff check .`
+- `uv run black --check .`
+- `uv run isort --check-only .`
+- `uv run bandit -r src/`
 
 ## 並列作業の指針
 

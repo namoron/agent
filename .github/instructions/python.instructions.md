@@ -11,6 +11,7 @@ applyTo: "**/*.py,**/*.pyi"
 ## 基本ルール
 
 - Python では `PEP 8` を守り、関数、メソッド、公開 API には型ヒントを付ける。
+- Python スクリプトや Python 製 CLI の実行は、基本 `uv` を使い、`python foo.py` より `uv run python foo.py`、`pytest` より `uv run pytest` を優先する。
 - 可能なら `from __future__ import annotations` を使う前提で考える。
 - 文字列整形は基本的に f-string を使う。
 - ファイル操作やパス結合は `os.path` より `pathlib.Path` を優先する。
@@ -39,6 +40,7 @@ applyTo: "**/*.py,**/*.pyi"
 ## 品質ゲート
 
 - format は `black`、import 整理は `isort`、lint は `ruff` を想定する。
+- 検証コマンドも、基本 `uv run black --check .`、`uv run isort --check-only .`、`uv run ruff check .` のように `uv run` 形式で扱う。
 - 自動生成するコードも、この前提に沿った import 順と style で出力する。
 - 例外処理は明示的に行い、失敗時の文脈が分かる実装にする。
 - 可視化コードでは、軸ラベルや凡例の欠落を軽視しない。

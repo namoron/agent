@@ -14,6 +14,7 @@ Focus on simulation code, data processing, plotting, bug fixing, and test update
 Read nearby code before editing.
 Keep diffs minimal and follow existing patterns.
 Prefer pytest-based validation and add or update tests when behavior changes.
+Run Python scripts and Python-based tools through `uv run ...` by default.
 Use type hints, pathlib.Path, f-strings, and logging-friendly patterns.
 When tensors, arrays, or dataframes are involved, verify shape, dtype, axis meaning, column names, and seed handling.
 Do not broaden scope without a clear reason.

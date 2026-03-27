@@ -20,7 +20,8 @@ agent は次の優先順で指示を解釈すること。
 - 複雑な変更は `調査 -> 計画 -> テスト -> 実装 -> 検証` の順で進める。
 - 新しい振る舞いは、可能なら先に失敗するテストを作る。
 - 差分は小さく保ち、無関係なリネームや大規模整形を混ぜない。
-- 実装後は変更範囲に応じて `pytest`、`ruff`、`black`、`isort` などの検証を行う。
+- Python や Python 製ツールの実行は、基本的に `uv` を使う。`python` や `pytest` を直接呼ぶ代わりに、`uv run python`、`uv run pytest`、`uv run ruff check .` のような形を優先する。
+- 実装後は変更範囲に応じて `uv run pytest`、`uv run ruff check .`、`uv run black --check .`、`uv run isort --check-only .` などの検証を行う。
 
 ## Research And Simulation Focus
 
@@ -35,6 +36,7 @@ agent は次の優先順で指示を解釈すること。
 - `print()` より `logging` を優先する。
 - 文字列整形は基本的に f-string を使う。
 - パス操作は `pathlib.Path` を優先する。
+- Python スクリプトや Python 製 CLI は、基本 `uv run ...` 経由で実行する。
 - ビジネスロジックは I/O 層から分離し、テストしやすい構造を保つ。
 - 配列や tensor を扱う処理では、shape、dtype、軸順、broadcast の前提を明確にする。
 - 数値計算では、乱数 seed、前処理条件、正規化、集計単位が変わっていないか確認する。
