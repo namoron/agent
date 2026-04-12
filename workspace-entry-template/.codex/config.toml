@@ -1,11 +1,13 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 
-# Project-local Codex configuration for research-oriented Python work.
-# Keep the model unpinned so Codex can use the current default frontier model.
-# Reasoning depth is controlled per agent role under `.codex/agents/`.
+# Project-local Codex bridge configuration for research-oriented Python work.
+# This template is meant to be copied into a workspace root that also contains
+# the shared `agent/` repository as a sibling of `.codex/`.
+# Reasoning depth is controlled by the role files under `../agent/.codex/agents/`.
 
+sandbox_mode = "read-only"
 approval_policy = "on-request"
-sandbox_mode = "workspace-write"
+allow_login_shell = false
 web_search = "live"
 
 [mcp_servers.openaiDeveloperDocs]
@@ -20,28 +22,28 @@ max_depth = 1
 
 [agents.python_dev]
 description = "Python implementation agent for simulations, data processing, plotting, bug fixes, and test updates."
-config_file = "agents/python-dev.toml"
+config_file = "../agent/.codex/agents/python-dev.toml"
 
 [agents.python_architect]
 description = "Python planning and architecture agent for experiment structure, decomposition, and risky refactors."
-config_file = "agents/python-architect.toml"
+config_file = "../agent/.codex/agents/python-architect.toml"
 
 [agents.python_reviewer]
 description = "Python review agent for correctness, reproducibility, regressions, and missing tests."
-config_file = "agents/python-reviewer.toml"
+config_file = "../agent/.codex/agents/python-reviewer.toml"
 
 [agents.explorer]
 description = "Read-only exploration agent for tracing code paths and gathering evidence."
-config_file = "agents/explorer.toml"
+config_file = "../agent/.codex/agents/explorer.toml"
 
 [agents.docs_researcher]
 description = "Documentation and API verification agent for Sionna, TensorFlow, Python libraries, and primary-source research."
-config_file = "agents/docs-researcher.toml"
+config_file = "../agent/.codex/agents/docs-researcher.toml"
 
 [agents.jp_paper_latex]
 description = "Japanese LaTeX paper writing agent for dearu-style drafting and revision."
-config_file = "agents/jp-paper-latex.toml"
+config_file = "../agent/.codex/agents/jp-paper-latex.toml"
 
 [agents.en_paper_latex]
 description = "English LaTeX paper writing agent for concise academic drafting and revision."
-config_file = "agents/en-paper-latex.toml"
+config_file = "../agent/.codex/agents/en-paper-latex.toml"

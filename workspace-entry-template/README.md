@@ -31,6 +31,7 @@ your-workspace/
 - `AGENTS.md`: 共通入口。Codex の起点にも使う。
 - `CLAUDE.md`: Claude Code 用の入口。
 - `.codex/AGENTS.md`: Codex 用の tool-specific bridge。
+- `.codex/config.toml`: `agent/.codex/agents/*.toml` を参照する Codex bridge config。
 - `.github/copilot-instructions.md`: GitHub Copilot 用の入口。
 - `.github/AGENTS.md`: Copilot 用の補助入口。
 
