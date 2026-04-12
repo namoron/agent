@@ -28,6 +28,12 @@
   - `.codex/agents/*.toml`
   - `.agents/skills/*/SKILL.md`
   - `.agents/skills/*/agents/openai.yaml`
+- ワークスペース配布用の入口雛形:
+  - `workspace-entry-template/`
+  - `workspace-entry-template/AGENTS.md`
+  - `workspace-entry-template/CLAUDE.md`
+  - `workspace-entry-template/.codex/AGENTS.md`
+  - `workspace-entry-template/.github/copilot-instructions.md`
 
 ## 現在の Agent Roles
 
@@ -55,3 +61,4 @@
 - Copilot の hook ベース memory capture は、セッション候補を `.git/copilot-memory/` に書き出す
 - Claude Code では、`CLAUDE.md` と `agents/*.md` を入口にして research / simulation 向けの subagent を使い分ける
 - Codex では、探索用の `explorer` と docs 確認用の `docs_researcher` を併用できる
+- `workspace-entry-template/` をコピーすると、`agent/` を正本にしたまま各ワークスペースへ入口ファイルだけ配布できる
