@@ -36,6 +36,8 @@ agent は次の優先順で指示を解釈すること。
 - `print()` より `logging` を優先する。
 - 文字列整形は基本的に f-string を使う。
 - パス操作は `pathlib.Path` を優先する。
+- コメントや docstring は、基本的に体言止めで簡潔に書く。
+- コメントや docstring の句読点は、基本的に全角の `，` と `．` を使う。
 - Python スクリプトや Python 製 CLI は、基本 `uv run ...` 経由で実行する。
 - ビジネスロジックは I/O 層から分離し、テストしやすい構造を保つ。
 - 配列や tensor を扱う処理では、shape、dtype、軸順、broadcast の前提を明確にする。

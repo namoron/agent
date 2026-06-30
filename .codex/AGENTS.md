@@ -44,6 +44,8 @@
 - `os.path` より `pathlib.Path` を優先する。
 - `%` formatting や `.format()` より f-string を優先する。
 - 場当たり的な `print()` デバッグより `logging` を優先する。
+- コメントや docstring は、基本的に体言止めで簡潔に書く。
+- コメントや docstring の句読点は、基本的に全角の `，` と `．` を使う。
 - ビジネスロジックは framework や I/O の glue code から分離する。
 - 引数が増えてきたら `dataclass` や DTO 的な明確なオブジェクトを検討する。
 - `NumPy` や tensor を扱う関数では、shape と axis の意味が読み取れる命名を優先する。
