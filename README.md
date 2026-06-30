@@ -1,7 +1,7 @@
 # agent
 
 無線通信シミュレーション、数値実験、論文執筆を主な用途にした、Python 中心の agent テンプレートです。
-`everything-claude-code` を参考にしつつ、GitHub Copilot と Codex で使う構成を、研究・解析ワークフロー向けに絞っています。
+`everything-claude-code` を参考にしつつ、Claude Code、GitHub Copilot、Codex で使う構成を、研究・解析ワークフロー向けに絞っています。
 
 ## 想定する日常タスク
 
@@ -14,6 +14,9 @@
 ## 含まれるもの
 
 - 共通ルール: `AGENTS.md`
+- Claude Code:
+  - `CLAUDE.md`
+  - `agents/*.md`
 - GitHub Copilot:
   - `.github/copilot-instructions.md`
   - `.github/instructions/python.instructions.md`
@@ -25,9 +28,16 @@
   - `.codex/agents/*.toml`
   - `.agents/skills/*/SKILL.md`
   - `.agents/skills/*/agents/openai.yaml`
+- ワークスペース配布用の入口雛形:
+  - `workspace-entry-template/`
+  - `workspace-entry-template/AGENTS.md`
+  - `workspace-entry-template/CLAUDE.md`
+  - `workspace-entry-template/.codex/AGENTS.md`
+  - `workspace-entry-template/.github/copilot-instructions.md`
 
 ## 現在の Agent Roles
 
+- Claude Code: `python-dev`, `python-architect`, `python-reviewer`, `explorer`, `docs-researcher`, `jp-paper-latex`, `en-paper-latex`
 - Copilot: `python-dev`, `python-architect`, `python-reviewer`, `docs-researcher`, `jp-paper-latex`, `en-paper-latex`
 - Codex: `python_dev`, `python_architect`, `python_reviewer`, `explorer`, `docs_researcher`, `jp_paper_latex`, `en_paper_latex`
 
@@ -49,4 +59,6 @@
 ## 補助機能
 
 - Copilot の hook ベース memory capture は、セッション候補を `.git/copilot-memory/` に書き出す
+- Claude Code では、`CLAUDE.md` と `agents/*.md` を入口にして research / simulation 向けの subagent を使い分ける
 - Codex では、探索用の `explorer` と docs 確認用の `docs_researcher` を併用できる
+- `workspace-entry-template/` をコピーすると、`agent/` を正本にしたまま各ワークスペースへ入口ファイルだけ配布できる

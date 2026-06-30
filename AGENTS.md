@@ -3,6 +3,7 @@
 このファイルはリポジトリ全体で共有する共通指示です。
 ツール固有の補足は次を参照します。
 
+- Claude Code: `CLAUDE.md` と `agents/*.md`
 - Codex: `.codex/AGENTS.md`
 - GitHub Copilot: `.github/AGENTS.md` と `.github/copilot-instructions.md`
 
