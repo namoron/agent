@@ -1,7 +1,0 @@
-interface:
-  display_name: "English Paper LaTeX"
-  short_description: "English LaTeX paper drafting and revision guidance"
-  default_prompt: "Use $en-paper-latex to draft or revise English academic LaTeX text with concise style and citation-aware wording."
-
-policy:
-  allow_implicit_invocation: true

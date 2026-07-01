@@ -1,7 +1,0 @@
-interface:
-  display_name: "Python Review"
-  short_description: "Risk-first Python diff review guidance"
-  default_prompt: "Use $python-review to review a Python diff for bugs, regressions, missing tests, and security risks."
-
-policy:
-  allow_implicit_invocation: true

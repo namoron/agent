@@ -1,7 +1,0 @@
-interface:
-  display_name: "Japanese Paper LaTeX"
-  short_description: "Japanese LaTeX paper drafting and revision guidance"
-  default_prompt: "Use $jp-paper-latex to draft or revise Japanese academic LaTeX text with dearu style and citation-aware wording."
-
-policy:
-  allow_implicit_invocation: true
